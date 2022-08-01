@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'dart:ffi';
 
 class Person {
   Person(
@@ -20,8 +19,8 @@ class Person {
   String? contactNumber;
   DateTime birthday;
   int? familyBurdens;
-  Bool disability;
-  Float? disabilityPercent;
+  bool disability;
+  double? disabilityPercent;
 
   factory Person.fromJson(String str) => Person.fromMap(json.decode(str));
 
@@ -30,8 +29,8 @@ class Person {
   factory Person.fromMap(Map<String, dynamic> json) => Person(
         id: json["id"],
         dni: json["dni"],
-        lastname: json["lastname"],
         name: json["name"],
+        lastname: json["lastname"],
         contactNumber: json["contact_number"],
         birthday: json["fecha_nacimiento"],
         familyBurdens: json["cargas_familiares"],

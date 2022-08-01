@@ -18,9 +18,18 @@ class _ListPersonScreenState extends State<ListPersonScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Center(
-        child: Text('Lista de personas'),
+    return Scaffold(
+      appBar: AppBar(title: const Text('Personas')),
+      body: Column(
+        children: const [
+          ListTile(
+            leading: Icon(
+              Icons.person_sharp,
+              color: Color.fromARGB(255, 30, 184, 34),
+            ),
+            title: Text('Person 1'),
+          )
+        ],
       ),
     );
   }

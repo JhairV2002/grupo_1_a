@@ -12,25 +12,31 @@ class _ListPersonScreenState extends State<ListPersonScreen> {
   @override
   void initState() {
     super.initState();
-    final userProvider = Provider.of<PersonProvider>(context, listen: false);
-    print(userProvider.persons);
+    final personProvider = Provider.of<PersonProvider>(context, listen: false);
+    personProvider.getPersons();
   }
 
   @override
   Widget build(BuildContext context) {
+    final personProvider = Provider.of<PersonProvider>(context);
     return Scaffold(
-      appBar: AppBar(title: const Text('Personas')),
-      body: Column(
-        children: const [
-          ListTile(
-            leading: Icon(
-              Icons.person_sharp,
-              color: Color.fromARGB(255, 30, 184, 34),
-            ),
-            title: Text('Person 1'),
-          )
-        ],
-      ),
-    );
+        appBar: AppBar(title: const Text('Personas')),
+        // body: Column(
+        //   children: [
+        body: ListView.builder(
+            // separatorBuilder: (_, __) => const Divider(),
+            itemCount: personProvider.persons.length,
+            itemBuilder: (context, i) {
+              return ListTile(
+                leading: const Icon(
+                  Icons.person_sharp,
+                  color: Color.fromARGB(255, 30, 184, 34),
+                ),
+                title: Text(personProvider.persons[i].name!),
+              );
+            })
+        //   ],
+        // ),
+        );
   }
 }

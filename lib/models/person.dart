@@ -1,42 +1,36 @@
-import 'dart:convert';
-
 class Person {
   Person(
       {this.id,
-      required this.dni,
-      required this.lastname,
-      required this.name,
+      this.dni,
+      this.lastname,
+      this.name,
       this.contactNumber,
-      required this.birthday,
+      this.birthday,
       this.familyBurdens,
-      required this.disability,
+      this.disability,
       this.disabilityPercent});
 
   int? id;
-  String dni;
-  String lastname;
-  String name;
+  String? dni;
+  String? lastname;
+  String? name;
   String? contactNumber;
-  DateTime birthday;
+  DateTime? birthday;
   int? familyBurdens;
-  bool disability;
+  bool? disability;
   double? disabilityPercent;
 
-  factory Person.fromJson(String str) => Person.fromMap(json.decode(str));
-
-  String toJson() => json.encode(toMap());
-
-  factory Person.fromMap(Map<String, dynamic> json) => Person(
-        id: json["id"],
-        dni: json["dni"],
-        name: json["name"],
-        lastname: json["lastname"],
-        contactNumber: json["contact_number"],
-        birthday: json["fecha_nacimiento"],
-        familyBurdens: json["cargas_familiares"],
-        disability: json["disability"],
-        disabilityPercent: json["porcentaje_disability"],
-      );
+  Person.fromJson(Map<String, dynamic> json) {
+    id = json["id"];
+    dni = json["dni"];
+    name = json["name"];
+    lastname = json["lastname"];
+    contactNumber = json["contact_number"];
+    birthday = json["fecha_nacimiento"];
+    familyBurdens = json["cargas_familiares"];
+    disability = json["disability"];
+    disabilityPercent = json["porcentaje_disability"];
+  }
 
   Map<String, dynamic> toMap() => {
         "id": id,

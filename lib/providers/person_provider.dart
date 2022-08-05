@@ -14,6 +14,7 @@ class PersonProvider with ChangeNotifier {
 
     responseBody.forEach((el) {
       final currentPerson = Person.fromJson(el);
+      persons.removeWhere((element) => currentPerson.id == element.id);
       persons.add(currentPerson);
     });
 

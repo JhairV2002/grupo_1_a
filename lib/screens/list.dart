@@ -13,7 +13,7 @@ class _ListPersonScreenState extends State<ListPersonScreen> {
   void initState() {
     super.initState();
     final personProvider = Provider.of<PersonProvider>(context, listen: false);
-    personProvider.getPersons();
+    personProvider.getPersons().then((res) => print(res));
   }
 
   @override
@@ -32,7 +32,8 @@ class _ListPersonScreenState extends State<ListPersonScreen> {
                   Icons.person_sharp,
                   color: Color.fromARGB(255, 30, 184, 34),
                 ),
-                title: Text(personProvider.persons[i].name!),
+                title: Text(
+                    '${personProvider.persons[i].name!} ${personProvider.persons[i].lastname!}'),
               );
             })
         //   ],

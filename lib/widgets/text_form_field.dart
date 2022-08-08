@@ -1,18 +1,20 @@
 import 'package:flutter/material.dart';
 
 class CustomTextFormField extends StatelessWidget {
-  CustomTextFormField(
-      {super.key,
-      this.icon,
-      this.suffixIcon,
-      this.hintText,
-      this.labelText,
-      this.helperText,
-      this.autofocus,
-      this.keyboardType,
-      this.obscureText,
-      this.initialValue,
-      required this.onChange,});
+  CustomTextFormField({
+    super.key,
+    this.icon,
+    this.suffixIcon,
+    this.hintText,
+    this.labelText,
+    this.helperText,
+    this.autofocus,
+    this.keyboardType,
+    this.obscureText,
+    this.initialValue,
+    this.color,
+    required this.onChange,
+  });
 
   Icon? icon;
   Icon? suffixIcon;
@@ -24,6 +26,7 @@ class CustomTextFormField extends StatelessWidget {
   bool? obscureText;
   Function(String?) onChange;
   String? initialValue;
+  TextStyle? color;
 
   @override
   Widget build(BuildContext context) {
@@ -38,10 +41,12 @@ class CustomTextFormField extends StatelessWidget {
             icon: icon,
             suffixIcon: suffixIcon,
             hintText: hintText,
-            labelText: labelText, 
+            labelText: labelText,
             helperText: helperText,
+            helperStyle: color ?? const TextStyle(color: Colors.white),
           ),
           onChanged: onChange,
+          style: color ?? const TextStyle(color: Colors.white),
         )));
   }
 }

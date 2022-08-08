@@ -30,10 +30,6 @@ class FormScreen extends StatelessWidget {
               icon: const Icon(Icons.person),
             ),
             CustomTextFormField(
-              helperText: 'Apellido',
-              icon: const Icon(Icons.person),
-            ),
-            CustomTextFormField(
               helperText: 'Numero de contacto',
               keyboardType: TextInputType.number,
               icon: const Icon(Icons.contact_page),

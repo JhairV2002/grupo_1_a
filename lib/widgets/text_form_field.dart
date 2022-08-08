@@ -10,7 +10,8 @@ class CustomTextFormField extends StatelessWidget {
       this.helperText,
       this.autofocus,
       this.keyboardType,
-      this.obscureText});
+      this.obscureText,
+      required this.onChange});
 
   Icon? icon;
   Icon? suffixIcon;
@@ -20,21 +21,24 @@ class CustomTextFormField extends StatelessWidget {
   bool? autofocus;
   TextInputType? keyboardType;
   bool? obscureText;
+  Function(String?) onChange;
 
   @override
   Widget build(BuildContext context) {
     return (Padding(
         padding: const EdgeInsets.all(10),
         child: TextFormField(
-            autofocus: autofocus ?? false,
-            keyboardType: keyboardType ?? TextInputType.text,
-            obscureText: obscureText ?? false,
-            decoration: InputDecoration(
-              icon: icon,
-              suffixIcon: suffixIcon,
-              hintText: hintText,
-              labelText: labelText,
-              helperText: helperText,
-            ))));
+          autofocus: autofocus ?? false,
+          keyboardType: keyboardType ?? TextInputType.text,
+          obscureText: obscureText ?? false,
+          decoration: InputDecoration(
+            icon: icon,
+            suffixIcon: suffixIcon,
+            hintText: hintText,
+            labelText: labelText,
+            helperText: helperText,
+          ),
+          onChanged: onChange,
+        )));
   }
 }

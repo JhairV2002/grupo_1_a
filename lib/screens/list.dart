@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:grupo_1_a/providers/person_provider.dart';
+import 'package:grupo_1_a/screens/form.dart';
 import 'package:provider/provider.dart';
 
 class ListPersonScreen extends StatefulWidget {
@@ -35,13 +36,16 @@ class _ListPersonScreenState extends State<ListPersonScreen> {
                 title: Text(
                     '${personProvider.persons[i].name!} ${personProvider.persons[i].lastname!}'),
                 onTap: () {
-                  Navigator.pushNamed(context, '/form-person',
-                      arguments: personProvider.persons[i]);
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) =>
+                              FormScreen(person: personProvider.persons[i])));
                 },
               );
             }),
         floatingActionButton: FloatingActionButton(
-            child: Icon(Icons.add),
+            child: const Icon(Icons.add),
             onPressed: () {
               Navigator.pushNamed(context, '/form-person');
             })

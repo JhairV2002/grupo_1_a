@@ -33,11 +33,28 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Person App',
+      // onGenerateRoute: (settings) {
+      //   // para la raiz de la app
+      //   if (settings.name == '/') {
+      //     return MaterialPageRoute(builder: (context) => const HomeScreen());
+      //   }
+      //   // para la lista
+      //   if (settings.name == '/list-person') {
+      //     return MaterialPageRoute(
+      //         builder: (context) => const ListPersonScreen());
+      //   }
+
+      //   // para el formulario pasandole el id
+
+      //     return MaterialPageRoute(builder: (context) => FormScreen());
+
+      //   // para el formulario con parametro
+      // },
       initialRoute: '/',
       routes: {
         '/': (context) => const HomeScreen(),
         '/list-person': (context) => const ListPersonScreen(),
-        '/form-person': (context) => const FormScreen()
+        '/form-person': (context) => FormScreen()
       },
     );
   }

@@ -35,9 +35,14 @@ class _ListPersonScreenState extends State<ListPersonScreen> {
                 title: Text(
                     '${personProvider.persons[i].name!} ${personProvider.persons[i].lastname!}'),
               );
-            })
-        //   ],
-        // ),
-        );
+            }),
+            floatingActionButton:FloatingActionButton (child: Icon(Icons.add),
+            onPressed: (){
+              Navigator.pushNamed(context, '/form-person');
+                }           
+          )
+      //],
+  //  ),
+    );
   }
 }

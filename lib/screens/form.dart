@@ -22,7 +22,6 @@ class FormScreen extends StatelessWidget {
               icon: const Icon(Icons.person),
             ),
             CustomTextFormField(
-              autofocus: true,
               helperText: 'Nombre',
               icon: const Icon(Icons.person),
             ),
@@ -35,42 +34,35 @@ class FormScreen extends StatelessWidget {
               icon: const Icon(Icons.person),
             ),
             CustomTextFormField(
-              autofocus: true,
               helperText: 'Numero de contacto',
               keyboardType: TextInputType.number,
               icon: const Icon(Icons.contact_page),
             ),
             CustomTextFormField(
-              autofocus: true,
               helperText: 'Fecha de nacimiento',
               keyboardType: TextInputType.datetime,
               icon: const Icon(Icons.date_range),
             ),
             CustomTextFormField(
-              autofocus: true,
               helperText: 'Cargas familiares',
               keyboardType: TextInputType.number,
               icon: const Icon(Icons.accessibility),
             ),
             CustomTextFormField(
-              autofocus: true,
               helperText: 'Discapacidad',
               keyboardType: TextInputType.number,
               icon: const Icon(Icons.accessibility),
             ),
             CustomTextFormField(
-              autofocus: true,
               helperText: 'Discapacidad',
               keyboardType: TextInputType.number,
               icon: const Icon(Icons.accessibility),
             ),
             CustomTextFormField(
-              autofocus: true,
               helperText: 'Porcentaje Discapacidad',
               keyboardType: TextInputType.number,
               icon: const Icon(Icons.accessibility),
             ),
-          
           ],
         ),
       ),

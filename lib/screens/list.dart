@@ -21,9 +21,15 @@ class _ListPersonScreenState extends State<ListPersonScreen> {
   Widget build(BuildContext context) {
     final personProvider = Provider.of<PersonProvider>(context);
     return Scaffold(
-        appBar: AppBar(title: const Text('Personas')),
+        appBar: AppBar(
+          title: const Text('Lista de Personas'),
+          backgroundColor: const Color.fromARGB(255, 17, 14, 14),
+                  elevation: 0),
+                  backgroundColor: const Color.fromARGB(255, 23, 18, 18),
         // body: Column(
         //   children: [
+    
+
         body: ListView.builder(
             // separatorBuilder: (_, __) => const Divider(),
             itemCount: personProvider.persons.length,
@@ -34,7 +40,8 @@ class _ListPersonScreenState extends State<ListPersonScreen> {
                   color: Color.fromARGB(255, 30, 184, 34),
                 ),
                 title: Text(
-                    '${personProvider.persons[i].name!} ${personProvider.persons[i].lastname!}'),
+                    '${personProvider.persons[i].name!} ${personProvider.persons[i].lastname!}', style: TextStyle(color: Colors.white),
+),
                 onTap: () {
                   Navigator.push(
                       context,
@@ -45,7 +52,7 @@ class _ListPersonScreenState extends State<ListPersonScreen> {
               );
             }),
         floatingActionButton: FloatingActionButton(
-            child: const Icon(Icons.add),
+            child: const Icon(Icons.add, color:  Color.fromARGB(255, 189, 26, 126)),
             onPressed: () {
               Navigator.pushNamed(context, '/form-person');
             })

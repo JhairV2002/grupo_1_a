@@ -12,7 +12,7 @@ class CustomTextFormField extends StatelessWidget {
       this.keyboardType,
       this.obscureText,
       this.initialValue,
-      required this.onChange});
+      required this.onChange,});
 
   Icon? icon;
   Icon? suffixIcon;
@@ -38,7 +38,7 @@ class CustomTextFormField extends StatelessWidget {
             icon: icon,
             suffixIcon: suffixIcon,
             hintText: hintText,
-            labelText: labelText,
+            labelText: labelText, 
             helperText: helperText,
           ),
           onChanged: onChange,

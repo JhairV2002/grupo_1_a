@@ -29,19 +29,22 @@ class FormScreen extends StatelessWidget {
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
           title: const Text("Agregar persona"),
-          backgroundColor: const Color.fromARGB(255, 23, 18, 18)),
+                 backgroundColor: const Color.fromARGB(255, 17, 14, 14),
+                  elevation: 0),
+                  backgroundColor: const Color.fromARGB(255, 23, 18, 18),
       body: Form(
         key: _formKey,
         child: SingleChildScrollView(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
+              
               CustomTextFormField(
                 autofocus: true,
                 helperText: 'Dni',
                 initialValue: formValues['dni'],
                 keyboardType: TextInputType.number,
-                icon: const Icon(Icons.person),
+                icon: const Icon(Icons.branding_watermark, color: Color.fromARGB(255, 30, 184, 34),),
                 onChange: (value) {
                   formValues['dni'] = value ?? '';
                   print(formValues);
@@ -50,7 +53,7 @@ class FormScreen extends StatelessWidget {
               CustomTextFormField(
                 helperText: 'Nombre',
                 initialValue: formValues['name'],
-                icon: const Icon(Icons.person),
+                icon: const Icon(Icons.person, color: Color.fromARGB(255, 30, 184, 34),),
                 onChange: (value) {
                   formValues['name'] = value ?? '';
                 },
@@ -58,7 +61,7 @@ class FormScreen extends StatelessWidget {
               CustomTextFormField(
                 helperText: 'Apellido',
                 initialValue: formValues['lastname'],
-                icon: const Icon(Icons.person),
+                icon: const Icon(Icons.person, color: Color.fromARGB(255, 30, 184, 34),),
                 onChange: (value) {
                   formValues['lastname'] = value ?? '';
                 },
@@ -67,7 +70,7 @@ class FormScreen extends StatelessWidget {
                 helperText: 'Numero de contacto',
                 initialValue: formValues['contactNumber'],
                 keyboardType: TextInputType.number,
-                icon: const Icon(Icons.contact_page),
+                icon: const Icon(Icons.phone_android,color: Color.fromARGB(255, 30, 184, 34),),
                 onChange: (value) {
                   formValues['contactNumber'] = value ?? '';
                 },
@@ -76,7 +79,7 @@ class FormScreen extends StatelessWidget {
                 helperText: 'Fecha de nacimiento',
                 initialValue: formValues['birthday'],
                 keyboardType: TextInputType.datetime,
-                icon: const Icon(Icons.date_range),
+                icon: const Icon(Icons.date_range,color: Color.fromARGB(255, 30, 184, 34),),
                 onChange: (value) {
                   formValues['birthday'] = value ?? '';
                 },
@@ -85,7 +88,7 @@ class FormScreen extends StatelessWidget {
                 helperText: 'Cargas familiares',
                 initialValue: formValues['familyBurdens'],
                 keyboardType: TextInputType.number,
-                icon: const Icon(Icons.accessibility),
+                icon: const Icon(Icons.family_restroom,color: Color.fromARGB(255, 30, 184, 34),),
                 onChange: (value) {
                   formValues['familyBurdens'] = value ?? '';
                 },
@@ -94,7 +97,7 @@ class FormScreen extends StatelessWidget {
                 helperText: 'Discapacidad',
                 initialValue: formValues['disability'],
                 keyboardType: TextInputType.number,
-                icon: const Icon(Icons.accessibility),
+                icon: const Icon(Icons.accessible,color: Color.fromARGB(255, 30, 184, 34),),
                 onChange: (value) {
                   formValues['disability'] = value ?? '';
                 },
@@ -103,7 +106,7 @@ class FormScreen extends StatelessWidget {
                 helperText: 'Porcentaje Discapacidad',
                 initialValue: formValues['disabilityPercent'],
                 keyboardType: TextInputType.number,
-                icon: const Icon(Icons.accessibility),
+                icon: const Icon(Icons.sick, color: Color.fromARGB(255, 30, 184, 34)),
                 onChange: (value) {
                   formValues['disabilityPercent'] = value ?? '';
                 },
@@ -112,7 +115,7 @@ class FormScreen extends StatelessWidget {
                 onPressed: () {
                   personProvider.createPerson(formValues);
                 },
-                child: const Icon(Icons.save),
+                child: const Icon(Icons.save, color: Color.fromARGB(255, 189, 26, 126)),
               )
             ],
           ),

@@ -11,6 +11,7 @@ class CustomTextFormField extends StatelessWidget {
       this.autofocus,
       this.keyboardType,
       this.obscureText,
+      this.initialValue,
       required this.onChange});
 
   Icon? icon;
@@ -22,6 +23,7 @@ class CustomTextFormField extends StatelessWidget {
   TextInputType? keyboardType;
   bool? obscureText;
   Function(String?) onChange;
+  String? initialValue;
 
   @override
   Widget build(BuildContext context) {
@@ -31,6 +33,7 @@ class CustomTextFormField extends StatelessWidget {
           autofocus: autofocus ?? false,
           keyboardType: keyboardType ?? TextInputType.text,
           obscureText: obscureText ?? false,
+          initialValue: initialValue ?? '',
           decoration: InputDecoration(
             icon: icon,
             suffixIcon: suffixIcon,

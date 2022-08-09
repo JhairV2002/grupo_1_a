@@ -15,7 +15,7 @@ class Person {
   String? lastname;
   String? name;
   String? contactNumber;
-  DateTime? birthday;
+  String? birthday;
   int? familyBurdens;
   bool? disability;
   double? disabilityPercent;
@@ -25,11 +25,11 @@ class Person {
     dni = json["dni"];
     name = json["name"];
     lastname = json["lastname"];
-    contactNumber = json["contact_number"];
-    birthday = json["fecha_nacimiento"];
-    familyBurdens = json["cargas_familiares"];
+    contactNumber = json["contactNumber"];
+    birthday = json["birthday"];
+    familyBurdens = json["familyBurdens"];
     disability = json["disability"];
-    disabilityPercent = json["porcentaje_disability"];
+    disabilityPercent = json["disabilityPercent"];
   }
 
   Map<String, dynamic> toMap() => {

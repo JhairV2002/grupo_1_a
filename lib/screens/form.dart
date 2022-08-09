@@ -15,10 +15,10 @@ class FormScreen extends StatelessWidget {
     Map<String, String> formValues = {
       "id": person?.id.toString() ?? "0",
       "dni": person?.dni.toString() ?? "",
-      "name": person?.name.toString() ?? "",
       "lastname": person?.lastname.toString() ?? "",
-      "contactNumber": person?.contactNumber.toString() ?? "",
-      "birtday": person?.birthday.toString() ?? "",
+      "name": person?.name.toString() ?? "",
+      "contactNumber": person?.contactNumber ?? "",
+      "birthday": person?.birthday.toString() ?? "",
       "familyBurdens": person?.familyBurdens.toString() ?? "",
       "disability": person?.familyBurdens.toString() ?? "",
       "disabilityPercent": person?.disabilityPercent.toString() ?? "",

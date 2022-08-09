@@ -140,20 +140,20 @@ class FormScreen extends StatelessWidget {
                   formValues['disabilityPercent'] = value ?? '';
                 },
               ),
+
               FloatingActionButton(
-                onPressed: () {
-                  if (formValues['id'] != "0") {
-                    personProvider.updatePerson(formValues);
-                  } else {
-                    personProvider.createPerson(formValues);
-                  }
-                },
-                backgroundColor: const Color.fromARGB(255, 30, 184, 34),
-                child: const Icon(
-                  Icons.save,
-                  color: Colors.black,
-                ),
-              ),
+                  onPressed: () {
+                    if (formValues['id'] != "0") {
+                      personProvider.updatePerson(formValues);
+                    } else {
+                      personProvider.createPerson(formValues);
+                    }
+                  },
+                  backgroundColor: const Color.fromARGB(255, 30, 184, 34),
+                  child: const Icon(
+                    Icons.save,
+                    color: Colors.black,
+                  ))
             ],
           ),
         ),

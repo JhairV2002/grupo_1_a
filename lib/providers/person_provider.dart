@@ -29,6 +29,13 @@ class PersonProvider with ChangeNotifier {
     print(response);
   }
 
+  Future updatePerson(Map<String, String> body) async {
+    var url = Uri.parse("$uri/update");
+    var response = await http.put(url,
+        body: jsonEncode(body), headers: {"Content-Type": "application/json"});
+    print(response);
+  }
+
   Future<Person> getPersonById(id) async {
     String url = 'http://localhost:8080/person/findById/$id';
     var uri = Uri.parse(url);

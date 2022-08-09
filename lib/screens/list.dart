@@ -52,8 +52,11 @@ class _ListPersonScreenState extends State<ListPersonScreen> {
               );
             }),
         floatingActionButton: FloatingActionButton(
-            child:
-                const Icon(Icons.add, color: Color.fromARGB(255, 189, 26, 126)),
+            backgroundColor: const Color.fromARGB(255, 30, 184, 34),
+            child: const Icon(
+              Icons.add,
+              color: Colors.black,
+            ),
             onPressed: () {
               Navigator.pushNamed(context, '/form-person');
             })

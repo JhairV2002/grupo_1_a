@@ -133,12 +133,18 @@ class FormScreen extends StatelessWidget {
                 },
               ),
               FloatingActionButton(
-                onPressed: () {
-                  personProvider.createPerson(formValues);
-                },
-                child: const Icon(Icons.save,
-                    color: Color.fromARGB(255, 189, 26, 126)),
-              )
+                  onPressed: () {
+                    if (formValues['id'] != "0") {
+                      personProvider.updatePerson(formValues);
+                    } else {
+                      personProvider.createPerson(formValues);
+                    }
+                  },
+                  backgroundColor: const Color.fromARGB(255, 30, 184, 34),
+                  child: const Icon(
+                    Icons.save,
+                    color: Colors.black,
+                  ))
             ],
           ),
         ),

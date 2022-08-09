@@ -142,13 +142,27 @@ class FormScreen extends StatelessWidget {
               ),
 
               FloatingActionButton(
-                  onPressed: () {
-                    if (formValues['id'] != "0") {
-                      personProvider.updatePerson(formValues);
-                    } else {
-                      personProvider.createPerson(formValues);
-                    }
-                  },
+                  onPressed: () => showDialog(
+                        context: context,
+                        barrierDismissible: false,
+                        builder: (BuildContext ctx) => AlertDialog(
+                          title: const Text("GUARDADO"),
+                          content: const Text("SE GUARDO EXITOSAMENTE"),
+                          actions: <Widget>[
+                            TextButton(
+                              child: const Text('Cerrar'),
+                              onPressed: () {
+                                if (formValues['id'] != "0") {
+                                  personProvider.updatePerson(formValues);
+                                } else {
+                                  personProvider.createPerson(formValues);
+                                }
+                                Navigator.of(context).pop();
+                              },
+                            ),
+                          ],
+                        ),
+                      ),
                   backgroundColor: const Color.fromARGB(255, 30, 184, 34),
                   child: const Icon(
                     Icons.save,

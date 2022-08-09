@@ -48,9 +48,6 @@ class FormScreen extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              GetCheckValue(
-                isChecked: checked(formValues['disability']),
-              ),
               CustomTextFormField(
                 autofocus: true,
                 helperText: 'Dni',
@@ -123,13 +120,10 @@ class FormScreen extends StatelessWidget {
                   formValues['familyBurdens'] = value ?? '';
                 },
               ),
-              // CheckboxListTile(
-              //   title: Text('Discapacidad'),
-              //   value: checked(formValues['disability']),
-              //   onChanged: (value) {
-              //     formValues['disability'];
-              //   },
-              // ),
+              GetCheckValue(
+                title: Text('Discapacidad'),
+                isChecked: checked(formValues['disability']),
+              ),
               CustomTextFormField(
                 helperText: 'Porcentaje Discapacidad',
                 initialValue: formValues['disabilityPercent'],
@@ -140,34 +134,34 @@ class FormScreen extends StatelessWidget {
                   formValues['disabilityPercent'] = value ?? '';
                 },
               ),
-
               FloatingActionButton(
-                  onPressed: () => showDialog(
-                        context: context,
-                        barrierDismissible: false,
-                        builder: (BuildContext ctx) => AlertDialog(
-                          title: const Text("GUARDADO"),
-                          content: const Text("SE GUARDO EXITOSAMENTE"),
-                          actions: <Widget>[
-                            TextButton(
-                              child: const Text('Cerrar'),
-                              onPressed: () {
-                                if (formValues['id'] != "0") {
-                                  personProvider.updatePerson(formValues);
-                                } else {
-                                  personProvider.createPerson(formValues);
-                                }
-                                Navigator.of(context).pop();
-                              },
-                            ),
-                          ],
-                        ),
+                onPressed: () {
+                  if (formValues['id'] != "0") {
+                    personProvider.updatePerson(formValues);
+                    showDialog(
+                      context: context,
+                      builder: (BuildContext context) => const AlertDialog(
+                        title: Text("ACTUALIZO"),
+                        content: Text("SE HA ACTUALIZADO EXITOSAMENTE"),
                       ),
-                  backgroundColor: const Color.fromARGB(255, 30, 184, 34),
-                  child: const Icon(
-                    Icons.save,
-                    color: Colors.black,
-                  ))
+                    );
+                  } else {
+                    personProvider.createPerson(formValues);
+                    showDialog(
+                      context: context,
+                      builder: (BuildContext context) => const AlertDialog(
+                        title: Text("GUARDADO"),
+                        content: Text("SE HA GUARDADO EXITOSAMENTE"),
+                      ),
+                    );
+                  }
+                },
+                backgroundColor: const Color.fromARGB(255, 30, 184, 34),
+                child: const Icon(
+                  Icons.save,
+                  color: Colors.black,
+                ),
+              ),
             ],
           ),
         ),

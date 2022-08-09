@@ -6,20 +6,21 @@ class CustomTextFormField extends StatelessWidget {
     this.icon,
     this.suffixIcon,
     this.hintText,
-    this.labelText,
+    this.prefixText,
     this.helperText,
     this.autofocus,
     this.keyboardType,
     this.obscureText,
     this.initialValue,
     this.color,
+    this.prefix,
     required this.onChange,
   });
 
   Icon? icon;
   Icon? suffixIcon;
   String? hintText;
-  String? labelText;
+  String? prefixText;
   String? helperText;
   bool? autofocus;
   TextInputType? keyboardType;
@@ -27,6 +28,7 @@ class CustomTextFormField extends StatelessWidget {
   Function(String?) onChange;
   String? initialValue;
   TextStyle? color;
+  Widget? prefix;
 
   @override
   Widget build(BuildContext context) {
@@ -41,7 +43,8 @@ class CustomTextFormField extends StatelessWidget {
           icon: icon,
           suffixIcon: suffixIcon,
           hintText: hintText,
-          labelText: labelText,
+          prefixText: prefixText,
+          prefix: prefix,
           helperText: helperText,
           helperStyle: color ?? const TextStyle(color: Colors.white),
         ),

@@ -22,10 +22,8 @@ class _ListPersonScreenState extends State<ListPersonScreen> {
     final personProvider = Provider.of<PersonProvider>(context);
     return Scaffold(
         appBar: AppBar(
-            title: const Text('Lista de Personas'),
-            backgroundColor: const Color.fromARGB(255, 17, 14, 14),
-            elevation: 0),
-        backgroundColor: const Color.fromARGB(255, 23, 18, 18),
+          title: const Text('Lista de Personas'),
+        ),
         // body: Column(
         //   children: [
 
@@ -36,11 +34,9 @@ class _ListPersonScreenState extends State<ListPersonScreen> {
               return ListTile(
                 leading: const Icon(
                   Icons.person_sharp,
-                  color: Color.fromARGB(255, 30, 184, 34),
                 ),
                 title: Text(
                   '${personProvider.persons[i].name!} ${personProvider.persons[i].lastname!}',
-                  style: TextStyle(color: Colors.white),
                 ),
                 onTap: () {
                   Navigator.push(
@@ -52,10 +48,8 @@ class _ListPersonScreenState extends State<ListPersonScreen> {
               );
             }),
         floatingActionButton: FloatingActionButton(
-            backgroundColor: const Color.fromARGB(255, 30, 184, 34),
             child: const Icon(
               Icons.add,
-              color: Colors.black,
             ),
             onPressed: () {
               Navigator.pushNamed(context, '/form-person');

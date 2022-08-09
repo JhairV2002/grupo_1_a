@@ -31,22 +31,24 @@ class CustomTextFormField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return (Padding(
-        padding: const EdgeInsets.all(10),
-        child: TextFormField(
-          autofocus: autofocus ?? false,
-          keyboardType: keyboardType ?? TextInputType.text,
-          obscureText: obscureText ?? false,
-          initialValue: initialValue ?? '',
-          decoration: InputDecoration(
-            icon: icon,
-            suffixIcon: suffixIcon,
-            hintText: hintText,
-            labelText: labelText,
-            helperText: helperText,
-            helperStyle: color ?? const TextStyle(color: Colors.white),
-          ),
-          onChanged: onChange,
-          style: color ?? const TextStyle(color: Colors.white),
-        )));
+      padding: const EdgeInsets.all(10),
+      child: TextFormField(
+        autofocus: autofocus ?? false,
+        keyboardType: keyboardType ?? TextInputType.text,
+        obscureText: obscureText ?? false,
+        initialValue: initialValue ?? '',
+        decoration: InputDecoration(
+          icon: icon,
+          suffixIcon: suffixIcon,
+          hintText: hintText,
+          labelText: labelText,
+          helperText: helperText,
+          helperStyle: color ?? const TextStyle(color: Colors.white),
+        ),
+        onChanged: onChange,
+        style: color ?? const TextStyle(color: Colors.white),
+        cursorColor: const Color.fromARGB(255, 255, 255, 255),
+      ),
+    ));
   }
 }

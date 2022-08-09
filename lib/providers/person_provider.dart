@@ -22,14 +22,14 @@ class PersonProvider with ChangeNotifier {
     return persons;
   }
 
-  Future createPerson(Map<String, String> body) async {
+  Future createPerson(Map<String, dynamic> body) async {
     var url = Uri.parse("$uri/save");
     var response = await http.post(url,
         body: jsonEncode(body), headers: {"Content-Type": "application/json"});
     print(response);
   }
 
-  Future updatePerson(Map<String, String> body) async {
+  Future updatePerson(Map<String, dynamic> body) async {
     var url = Uri.parse("$uri/update");
     var response = await http.put(url,
         body: jsonEncode(body), headers: {"Content-Type": "application/json"});

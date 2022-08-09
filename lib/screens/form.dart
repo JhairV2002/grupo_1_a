@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:grupo_1_a/models/person.dart';
 import 'package:grupo_1_a/providers/person_provider.dart';
 import 'package:grupo_1_a/widgets/text_form_field.dart';
+import 'package:grupo_1_a/widgets/checkbox_form.dart';
 import 'package:provider/provider.dart';
 
 class FormScreen extends StatelessWidget {
   Person? person;
+  bool isChecked = false;
   FormScreen({super.key, this.person});
-
   final _formKey = GlobalKey<FormState>();
-
   @override
   Widget build(BuildContext context) {
     Map<String, String> formValues = {
@@ -20,24 +20,37 @@ class FormScreen extends StatelessWidget {
       "contactNumber": person?.contactNumber ?? "",
       "birthday": person?.birthday.toString() ?? "",
       "familyBurdens": person?.familyBurdens.toString() ?? "",
-      "disability": person?.familyBurdens.toString() ?? "",
+      "disability": person?.disability.toString() ?? "",
       "disabilityPercent": person?.disabilityPercent.toString() ?? "",
     };
+    checked(String? disability) {
+      bool? isDisability;
+      if (disability == 'true' ||
+          disability == 'TRUE' ||
+          disability == 'True') {
+        isDisability = true;
+      } else {
+        isDisability = false;
+      }
+      return isDisability;
+    }
+
     print(person?.toMap());
     final personProvider = Provider.of<PersonProvider>(context);
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
-          title: const Text("Agregar persona"),
-          backgroundColor: const Color.fromARGB(255, 17, 14, 14),
-          elevation: 0),
-      backgroundColor: const Color.fromARGB(255, 23, 18, 18),
+        title: const Text("Agregar persona"),
+      ),
       body: Form(
         key: _formKey,
         child: SingleChildScrollView(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
+              GetCheckValue(
+                isChecked: checked(formValues['disability']),
+              ),
               CustomTextFormField(
                 autofocus: true,
                 helperText: 'Dni',
@@ -110,18 +123,13 @@ class FormScreen extends StatelessWidget {
                   formValues['familyBurdens'] = value ?? '';
                 },
               ),
-              CustomTextFormField(
-                helperText: 'Discapacidad',
-                initialValue: formValues['disability'],
-                keyboardType: TextInputType.number,
-                icon: const Icon(
-                  Icons.accessible,
-                  color: Color.fromARGB(255, 30, 184, 34),
-                ),
-                onChange: (value) {
-                  formValues['disability'] = value ?? '';
-                },
-              ),
+              // CheckboxListTile(
+              //   title: Text('Discapacidad'),
+              //   value: checked(formValues['disability']),
+              //   onChanged: (value) {
+              //     formValues['disability'];
+              //   },
+              // ),
               CustomTextFormField(
                 helperText: 'Porcentaje Discapacidad',
                 initialValue: formValues['disabilityPercent'],
@@ -133,18 +141,19 @@ class FormScreen extends StatelessWidget {
                 },
               ),
               FloatingActionButton(
-                  onPressed: () {
-                    if (formValues['id'] != "0") {
-                      personProvider.updatePerson(formValues);
-                    } else {
-                      personProvider.createPerson(formValues);
-                    }
-                  },
-                  backgroundColor: const Color.fromARGB(255, 30, 184, 34),
-                  child: const Icon(
-                    Icons.save,
-                    color: Colors.black,
-                  ))
+                onPressed: () {
+                  if (formValues['id'] != "0") {
+                    personProvider.updatePerson(formValues);
+                  } else {
+                    personProvider.createPerson(formValues);
+                  }
+                },
+                backgroundColor: const Color.fromARGB(255, 30, 184, 34),
+                child: const Icon(
+                  Icons.save,
+                  color: Colors.black,
+                ),
+              ),
             ],
           ),
         ),

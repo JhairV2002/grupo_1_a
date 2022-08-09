@@ -3,6 +3,7 @@ import 'package:grupo_1_a/providers/person_provider.dart';
 import 'package:grupo_1_a/screens/form.dart';
 import 'package:grupo_1_a/screens/home.dart';
 import 'package:grupo_1_a/screens/list.dart';
+import 'package:grupo_1_a/themes/theme.dart';
 import 'package:provider/provider.dart';
 
 void main() {
@@ -33,6 +34,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
+      theme: AppTheme.darkTheme,
       title: 'Person App',
       // onGenerateRoute: (settings) {
       //   // para la raiz de la app

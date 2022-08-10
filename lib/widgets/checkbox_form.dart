@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 
 class GetCheckValue extends StatefulWidget {
-  GetCheckValue({
-    super.key,
-    this.title,
-    required this.isChecked,
-  });
+  GetCheckValue(
+      {super.key,
+      this.title,
+      required this.isChecked,
+      required this.formField});
 
   bool isChecked;
   Widget? title;
+  var formField;
 
   @override
   GetCheckValueState createState() {
@@ -23,7 +24,7 @@ class GetCheckValueState extends State<GetCheckValue> {
       title: widget.title,
       value: widget.isChecked,
       onChanged: (value) {
-        setState(() => widget.isChecked = value!);
+        setState(() => widget.formField = value!);
       },
     );
   }

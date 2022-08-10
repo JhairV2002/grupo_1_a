@@ -37,10 +37,10 @@ class Person {
         "dni": dni,
         "lastname": lastname,
         "name": name,
-        "contact_number": contactNumber,
+        "contactNumber": contactNumber,
         "birthday": birthday,
-        "family_burdens": familyBurdens,
+        "familyBurdens": familyBurdens,
         "disability": disability,
-        "disability_percent": disabilityPercent,
+        "disabilityPercent": disabilityPercent,
       };
 }

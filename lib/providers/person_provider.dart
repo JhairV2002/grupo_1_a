@@ -17,6 +17,7 @@ class PersonProvider with ChangeNotifier {
       final currentPerson = Person.fromJson(el);
       persons.removeWhere((element) => currentPerson.id == element.id);
       persons.add(currentPerson);
+      persons.sort(((a, b) => a.id!.compareTo(b.id!)));
     });
 
     return persons;

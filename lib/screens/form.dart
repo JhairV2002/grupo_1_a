@@ -39,7 +39,7 @@ class _FormScreenState extends State<FormScreen> {
     "birthday": "",
     "familyBurdens": "",
     "disability": false,
-    "disabilityPercent": "",
+    "disabilityPercent": "0.00",
   };
 
   @override
@@ -172,7 +172,7 @@ class _FormScreenState extends State<FormScreen> {
                   color: Color.fromARGB(255, 30, 184, 34),
                 ),
                 onChange: (value) {
-                  if (widget.person?.familyBurdens != null) {
+                  if (widget.person != null) {
                     setState(() {
                       widget.person?.familyBurdens = int.parse(value!);
                     });
@@ -214,7 +214,7 @@ class _FormScreenState extends State<FormScreen> {
                 onChange: (value) {
                   if (widget.person?.disabilityPercent != null) {
                     setState(() {
-                      widget.person?.disabilityPercent = value as double?;
+                      widget.person?.disabilityPercent = double.parse(value!);
                     });
                   } else {
                     setState(() {
@@ -225,8 +225,9 @@ class _FormScreenState extends State<FormScreen> {
               ),
               FloatingActionButton(
                 onPressed: () {
-                  print(formValues);
                   if (widget.person != null) {
+                    print(widget.person!.toMap());
+                    Navigator.pushNamed(context, '/');
                     personProvider.updatePerson(widget.person!.toMap());
                     final snackBar = SnackBar(
                       content: const Text('Persona actualizada'),
@@ -240,6 +241,8 @@ class _FormScreenState extends State<FormScreen> {
                     ScaffoldMessenger.of(context).showSnackBar(snackBar);
                   } else {
                     personProvider.createPerson(formValues);
+                    Navigator.pushNamed(context, '/');
+                    print(formValues);
                     final snackBar = SnackBar(
                       content: const Text('Persona Registrada!'),
                       action: SnackBarAction(

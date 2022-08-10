@@ -19,7 +19,7 @@ class AppTheme {
       hoverColor: hoverFloatButton,
     ),
     appBarTheme: const AppBarTheme(
-      color: primary,
+      color: secondary,
       elevation: 0,
     ),
     inputDecorationTheme: const InputDecorationTheme(

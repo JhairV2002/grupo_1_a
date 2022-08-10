@@ -14,7 +14,7 @@ class _ListPersonScreenState extends State<ListPersonScreen> {
   void initState() {
     super.initState();
     final personProvider = Provider.of<PersonProvider>(context, listen: false);
-    personProvider.getPersons().then((res) => print(res.first.toMap()));
+    Future<List> listPersons = personProvider.getPersons();
   }
 
   @override

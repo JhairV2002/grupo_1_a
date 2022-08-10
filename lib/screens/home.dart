@@ -8,6 +8,7 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Administracion Personas'),
+        leading: const Icon(Icons.add_task_sharp),
         actions: [
           IconButton(icon: const Icon(Icons.search), onPressed: () {}),
           IconButton(icon: const Icon(Icons.notifications), onPressed: () {})

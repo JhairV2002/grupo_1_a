@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:grupo_1_a/models/person.dart';
 import 'package:grupo_1_a/providers/person_provider.dart';
@@ -184,17 +183,24 @@ class _FormScreenState extends State<FormScreen> {
                   }
                 },
               ),
-              Checkbox(
+              CheckboxListTile(
+                checkColor: Color.fromARGB(255, 0, 0, 0),
+                activeColor: Color.fromARGB(255, 40, 224, 46),
+                title: const Text('Discapacidad'),
                 value: widget.person?.disability ?? formValues['disability'],
                 onChanged: (value) {
                   if (widget.person?.disability != null) {
-                    setState(() {
-                      widget.person?.disability = value;
-                    });
+                    setState(
+                      () {
+                        widget.person?.disability = value;
+                      },
+                    );
                   } else {
-                    setState(() {
-                      formValues['disability'] = value ?? false;
-                    });
+                    setState(
+                      () {
+                        formValues['disability'] = value ?? false;
+                      },
+                    );
                   }
                 },
               ),

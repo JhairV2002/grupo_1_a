@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:grupo_1_a/models/person.dart';
 import 'package:grupo_1_a/providers/person_provider.dart';
+import 'package:grupo_1_a/routes/routes.dart';
 import 'package:grupo_1_a/widgets/text_form_field.dart';
 import 'package:provider/provider.dart';
 
@@ -15,7 +16,6 @@ class FormScreen extends StatefulWidget {
 
 class _FormScreenState extends State<FormScreen> {
   final _formKey = GlobalKey<FormState>();
-  // bool disability = false;
 
   changeState(value, String field) {
     if (widget.person != null) {

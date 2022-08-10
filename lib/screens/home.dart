@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
 
+import '../routes/routes.dart';
+import '../themes/theme.dart';
+
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final menuOptions = AppRoutes.menuOptions;
     return Scaffold(
       appBar: AppBar(
         title: const Text('Administracion Personas'),
@@ -14,41 +18,19 @@ class HomeScreen extends StatelessWidget {
           IconButton(icon: const Icon(Icons.notifications), onPressed: () {})
         ],
       ),
-      body: Center(
-        child: Card(
-          child: Column(
-            children: <Widget>[
-              ListTile(
-                leading: const Icon(
-                  Icons.person_sharp,
-                ),
-                title: const Text(
-                  'Lista de Personas',
-                ),
-                subtitle: const Text(
-                  'Administre empleados, familiares, etc.',
-                ),
-                onTap: () {
-                  Navigator.pushNamed(context, '/list-person');
-                },
-              ),
-              ListTile(
-                leading: const Icon(
-                  Icons.dynamic_form,
-                ),
-                title: const Text(
-                  'Formulario',
-                ),
-                subtitle: const Text(
-                  'Cree empleados, familiares, etc.',
-                ),
-                onTap: () {
-                  Navigator.pushNamed(context, '/form-person');
-                },
-              ),
-            ],
+      body: ListView.separated(
+        itemBuilder: (context, index) => ListTile(
+          leading: Icon(
+            menuOptions[index].icon,
+            color: AppTheme.primaryIcon,
           ),
+          title: Text(menuOptions[index].name),
+          onTap: () {
+            Navigator.pushNamed(context, menuOptions[index].route);
+          },
         ),
+        separatorBuilder: (_, __) => const Divider(),
+        itemCount: menuOptions.length,
       ),
     );
   }

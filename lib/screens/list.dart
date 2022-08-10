@@ -28,32 +28,36 @@ class _ListPersonScreenState extends State<ListPersonScreen> {
         //   children: [
 
         body: ListView.builder(
-            // separatorBuilder: (_, __) => const Divider(),
-            itemCount: personProvider.persons.length,
-            itemBuilder: (context, i) {
-              return ListTile(
-                leading: const Icon(
-                  Icons.person_sharp,
-                ),
-                title: Text(
-                  '${personProvider.persons[i].name!} ${personProvider.persons[i].lastname!}',
-                ),
-                onTap: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) =>
-                              FormScreen(person: personProvider.persons[i])));
-                },
-              );
-            }),
+          // separatorBuilder: (_, __) => const Divider(),
+          itemCount: personProvider.persons.length,
+          itemBuilder: (context, i) {
+            return ListTile(
+              leading: const Icon(
+                Icons.person_sharp,
+              ),
+              title: Text(
+                '${personProvider.persons[i].name!} ${personProvider.persons[i].lastname!}',
+              ),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) =>
+                        FormScreen(person: personProvider.persons[i]),
+                  ),
+                );
+              },
+            );
+          },
+        ),
         floatingActionButton: FloatingActionButton(
-            child: const Icon(
-              Icons.add,
-            ),
-            onPressed: () {
-              Navigator.pushNamed(context, '/form-person');
-            })
+          child: const Icon(
+            Icons.add,
+          ),
+          onPressed: () {
+            Navigator.pushNamed(context, '/form-person');
+          },
+        )
         //],
         //  ),
         );

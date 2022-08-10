@@ -228,22 +228,29 @@ class _FormScreenState extends State<FormScreen> {
                   print(formValues);
                   if (widget.person != null) {
                     personProvider.updatePerson(widget.person!.toMap());
-                    showDialog(
-                      context: context,
-                      builder: (BuildContext context) => const AlertDialog(
-                        title: Text("ACTUALIZO"),
-                        content: Text("SE HA ACTUALIZADO EXITOSAMENTE"),
+                    final snackBar = SnackBar(
+                      content: const Text('Persona actualizada'),
+                      action: SnackBarAction(
+                        label: 'ok',
+                        onPressed: () {
+                          // Some code to undo the change.
+                        },
                       ),
                     );
+                    ScaffoldMessenger.of(context).showSnackBar(snackBar);
                   } else {
                     personProvider.createPerson(formValues);
-                    showDialog(
-                      context: context,
-                      builder: (BuildContext context) => const AlertDialog(
-                        title: Text("GUARDADO"),
-                        content: Text("SE HA GUARDADO EXITOSAMENTE"),
+                    final snackBar = SnackBar(
+                      content: const Text('Persona Registrada!'),
+                      action: SnackBarAction(
+                        label: 'ok',
+                        onPressed: () {
+                          // Some code to undo the change.
+                        },
                       ),
                     );
+
+                    ScaffoldMessenger.of(context).showSnackBar(snackBar);
                   }
                 },
                 backgroundColor: const Color.fromARGB(255, 30, 184, 34),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:grupo_1_a/providers/person_provider.dart';
 import 'package:grupo_1_a/screens/form.dart';
+import 'package:grupo_1_a/themes/theme.dart';
 import 'package:provider/provider.dart';
 
 class ListPersonScreen extends StatefulWidget {
@@ -22,13 +23,13 @@ class _ListPersonScreenState extends State<ListPersonScreen> {
     final personProvider = Provider.of<PersonProvider>(context);
     return Scaffold(
         appBar: AppBar(
-          title: const Text('Lista de Personas'),
+          title: const Text('Personas'),
         ),
         // body: Column(
         //   children: [
 
         body: ListView.builder(
-            // separatorBuilder: (_, __) => const Divider(),
+            //separatorBuilder: (_, __) => const Divider(),
             itemCount: personProvider.persons.length,
             itemBuilder: (context, i) {
               return ListTile(
@@ -37,6 +38,11 @@ class _ListPersonScreenState extends State<ListPersonScreen> {
                 ),
                 title: Text(
                   '${personProvider.persons[i].name!} ${personProvider.persons[i].lastname!}',
+                ),
+                subtitle: Text(
+                  '${personProvider.persons[i].dni ?? "Cedula no registrada"} - ${personProvider.persons[i].contactNumber ?? "Numero no registrado"}',
+                  style: const TextStyle(
+                      color: Color.fromARGB(111, 255, 255, 255)),
                 ),
                 onTap: () {
                   Navigator.push(

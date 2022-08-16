@@ -40,11 +40,106 @@ class _FormScreenState extends State<FormScreen> {
     "familyBurdens": "",
     "disability": false,
     "disabilityPercent": "0.00",
+    "archived": false
   };
 
   @override
   Widget build(BuildContext context) {
     final personProvider = Provider.of<PersonProvider>(context);
+    deletePerson() {
+      widget.person!.archived = true;
+      personProvider.updatePerson(widget.person!.toMap());
+      Navigator.pushNamed(context, '/');
+      final snackBar = SnackBar(
+          content: const Text('Persona eliminada'),
+          action: SnackBarAction(
+            label: 'ok',
+            onPressed: () {},
+          ));
+      ScaffoldMessenger.of(context).showSnackBar(snackBar);
+    }
+
+    final AlertDialog dialog = AlertDialog(
+      title: const Text('¿Desea eliminar este registro?'),
+      content:
+          const Text('El registro se eliminará de la lista mas no de la base.'),
+      actions: [
+        FloatingActionButton(
+          onPressed: () => Navigator.pop(context),
+          child: const Icon(Icons.close),
+        ),
+        FloatingActionButton(
+          onPressed: () => deletePerson(),
+          child: const Icon(Icons.check),
+        ),
+      ],
+    );
+    showDeleteButton() {
+      final snackBar = SnackBar(
+        content: const Text('Persona Registrada!'),
+        action: SnackBarAction(
+          label: 'ok',
+          onPressed: () {
+            // Some code to undo the change.
+          },
+        ),
+      );
+      if (widget.person != null) {
+        return Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            FloatingActionButton(
+              onPressed: () {
+                showDialog(context: context, builder: (context) => dialog);
+              },
+              backgroundColor: const Color.fromARGB(255, 248, 114, 114),
+              child: const Icon(
+                Icons.delete,
+                color: Color.fromARGB(255, 71, 0, 0),
+              ),
+            ),
+            FloatingActionButton(
+              onPressed: () {
+                print(widget.person!.toMap());
+                Navigator.pushNamed(context, '/');
+                personProvider.updatePerson(widget.person!.toMap());
+                ScaffoldMessenger.of(context).showSnackBar(snackBar);
+              },
+              backgroundColor: const Color.fromARGB(255, 30, 184, 34),
+              child: const Icon(
+                Icons.save,
+                color: Colors.black,
+              ),
+            ),
+          ],
+        );
+      } else {
+        return FloatingActionButton(
+          onPressed: () {
+            personProvider.createPerson(formValues);
+            Navigator.pushNamed(context, '/');
+            print(formValues);
+            final snackBar = SnackBar(
+              content: const Text('Persona Registrada!'),
+              action: SnackBarAction(
+                label: 'ok',
+                onPressed: () {
+                  // Some code to undo the change.
+                },
+              ),
+            );
+
+            ScaffoldMessenger.of(context).showSnackBar(snackBar);
+          },
+          backgroundColor: const Color.fromARGB(255, 30, 184, 34),
+          child: const Icon(
+            Icons.save,
+            color: Colors.black,
+          ),
+        );
+      }
+    }
+
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
@@ -184,8 +279,8 @@ class _FormScreenState extends State<FormScreen> {
                 },
               ),
               CheckboxListTile(
-                checkColor: Color.fromARGB(255, 0, 0, 0),
-                activeColor: Color.fromARGB(255, 40, 224, 46),
+                checkColor: const Color.fromARGB(255, 0, 0, 0),
+                activeColor: const Color.fromARGB(255, 40, 224, 46),
                 title: const Text('Discapacidad'),
                 value: widget.person?.disability ?? formValues['disability'],
                 onChanged: (value) {
@@ -199,6 +294,27 @@ class _FormScreenState extends State<FormScreen> {
                     setState(
                       () {
                         formValues['disability'] = value ?? false;
+                      },
+                    );
+                  }
+                },
+              ),
+              CheckboxListTile(
+                checkColor: const Color.fromARGB(255, 0, 0, 0),
+                activeColor: const Color.fromARGB(255, 40, 224, 46),
+                title: const Text('Archivado'),
+                value: widget.person?.archived ?? formValues['archived'],
+                onChanged: (value) {
+                  if (widget.person?.archived != null) {
+                    setState(
+                      () {
+                        widget.person?.archived = value;
+                      },
+                    );
+                  } else {
+                    setState(
+                      () {
+                        formValues['archived'] = value ?? false;
                       },
                     );
                   }
@@ -223,45 +339,7 @@ class _FormScreenState extends State<FormScreen> {
                   }
                 },
               ),
-              FloatingActionButton(
-                onPressed: () {
-                  if (widget.person != null) {
-                    print(widget.person!.toMap());
-                    Navigator.pushNamed(context, '/');
-                    personProvider.updatePerson(widget.person!.toMap());
-                    final snackBar = SnackBar(
-                      content: const Text('Persona actualizada'),
-                      action: SnackBarAction(
-                        label: 'ok',
-                        onPressed: () {
-                          // Some code to undo the change.
-                        },
-                      ),
-                    );
-                    ScaffoldMessenger.of(context).showSnackBar(snackBar);
-                  } else {
-                    personProvider.createPerson(formValues);
-                    Navigator.pushNamed(context, '/');
-                    print(formValues);
-                    final snackBar = SnackBar(
-                      content: const Text('Persona Registrada!'),
-                      action: SnackBarAction(
-                        label: 'ok',
-                        onPressed: () {
-                          // Some code to undo the change.
-                        },
-                      ),
-                    );
-
-                    ScaffoldMessenger.of(context).showSnackBar(snackBar);
-                  }
-                },
-                backgroundColor: const Color.fromARGB(255, 30, 184, 34),
-                child: const Icon(
-                  Icons.save,
-                  color: Colors.black,
-                ),
-              ),
+              showDeleteButton()!,
             ],
           ),
         ),

@@ -19,6 +19,10 @@ class PersonProvider with ChangeNotifier {
       persons.add(currentPerson);
       persons.sort(((a, b) => a.id!.compareTo(b.id!)));
     });
+    persons.removeWhere((element) => element.archived == true);
+    persons.forEach((element) {
+      print(element.toMap());
+    });
 
     return persons;
   }

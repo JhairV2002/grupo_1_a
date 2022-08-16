@@ -19,6 +19,7 @@ class Person {
   int? familyBurdens;
   bool? disability;
   double? disabilityPercent;
+  bool? archived;
 
   Person.fromJson(Map<String, dynamic> json) {
     id = json["id"];
@@ -30,6 +31,7 @@ class Person {
     familyBurdens = json["familyBurdens"];
     disability = json["disability"];
     disabilityPercent = json["disabilityPercent"];
+    archived = json["archived"];
   }
 
   Map<String, dynamic> toMap() => {
@@ -42,5 +44,6 @@ class Person {
         "familyBurdens": familyBurdens,
         "disability": disability,
         "disabilityPercent": disabilityPercent,
+        "archived": archived
       };
 }
